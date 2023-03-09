@@ -38,7 +38,9 @@ spec:
       name: podman-pull-image
       resources: {}
       securityContext:
-        privileged: true
+        privileged: false
+        capabilities:
+          add: ["SETFCAP"]         
       volumeMounts:
         - mountPath: /var/lib/containers
           name: pipeline-cache
@@ -53,7 +55,9 @@ spec:
       name: buildah-tag-image
       resources: {}
       securityContext:
-        privileged: true
+        privileged: false
+        capabilities:
+          add: ["SETFCAP"]         
       volumeMounts:
         - mountPath: /var/lib/containers
           name: pipeline-cache
@@ -65,7 +69,9 @@ spec:
       name: buildah-list-images-after-tagging
       resources: {}
       securityContext:
-        privileged: true
+        privileged: false
+        capabilities:
+          add: ["SETFCAP"]         
       volumeMounts:
         - mountPath: /var/lib/containers
           name: pipeline-cache
@@ -82,7 +88,9 @@ spec:
       name: push-quarkuscoffeeshop-majestic-monolith-image-to-quay-latest
       resources: {}
       securityContext:
-        privileged: true
+        privileged: false
+        capabilities:
+          add: ["SETFCAP"]         
       volumeMounts:
         - mountPath: /etc/secret-volume
           name: quay-auth-secret
